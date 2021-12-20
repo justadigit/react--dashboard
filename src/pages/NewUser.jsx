@@ -9,15 +9,21 @@ const Form = styled.form`
   flex-wrap: wrap;
 `;
 const Item = styled.div`
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
 
   margin-top: 10px;
   margin-right: 20px;
-  & > * {
-    display: ${(props) => console.log(props)};
-  }
+`;
+const Gender = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const GenderLabel = styled.label`
+  margin-right: 10px;
+  font-weight: 600;
+  color: gray;
 `;
 const Label = styled.label`
   margin-bottom: 10px;
@@ -31,8 +37,22 @@ const Input = styled.input`
   border: 1px solid gray;
   border-radius: 5px;
 `;
-const Select = styled.select``;
+const Select = styled.select`
+  height: 40px;
+  border-radius: 5px;
+`;
 const Option = styled.option``;
+const Create = styled.button`
+  width: 200px;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  padding: 7px 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+`;
 const NewUser = () => {
   return (
     <Container>
@@ -89,13 +109,14 @@ const NewUser = () => {
         </Item>
         <Item>
           <Label htmlFor="gender">Gender</Label>
-          <br />
-          <Input type="radio" name="gender" value="male" />{' '}
-          <Label htmlFor="male">Male</Label>
-          <Input type="radio" name="gender" value="female" />
-          <Label htmlFor="female">Female</Label>
-          <Input type="radio" name="gender" value="other" />
-          <Label htmlFor="other">Other</Label>
+          <Gender>
+            <Input type="radio" name="gender" value="male" id="male" />{' '}
+            <GenderLabel htmlFor="male">Male</GenderLabel>
+            <Input type="radio" name="gender" value="female" id="female" />
+            <GenderLabel htmlFor="female">Female</GenderLabel>
+            <Input type="radio" name="gender" value="other" id="other" />
+            <GenderLabel htmlFor="other">Other</GenderLabel>
+          </Gender>
         </Item>
         <Item>
           <Label htmlFor="active">Active</Label>
@@ -104,6 +125,7 @@ const NewUser = () => {
             <Option value="notactive">No</Option>
           </Select>
         </Item>
+        <Create>Create</Create>
       </Form>
     </Container>
   );
